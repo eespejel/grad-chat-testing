@@ -1,0 +1,41 @@
+# =================================================
+# Configuración para text_extractor.py
+# =================================================
+
+json_database_path: data/20230430_legislaciones.json
+jsonl_database_path: data/20230430_legislaciones_preprocessed.jsonl
+
+# =================================================
+# Configuración para ai_conversation.py
+# =================================================
+
+recreate_chroma_db: false
+embeddings_provider: openai # puede ser "cohere"
+embeddings_model: text-embedding-ada-002 # con cohere puede ser "embed-multilingual-v2.0"
+chroma_db_name: chroma_docs
+metadata_keys:
+  - fuente
+  - pais
+  - titulo
+  - tema
+  - autores
+  - fecha_evento
+  - fecha_adicion
+  - origen
+  - periodo
+  - estado
+
+chat_model:
+  model_name: gpt-3.5-turbo
+  temperature: 0.9
+  max_tokens: 256
+
+text_splitting:
+  chunk_size: 1600
+  chunk_overlap: 50
+
+document_retrieval:
+  k: 5
+
+conversation_chain:
+  verbose: true
